@@ -1,1 +1,5 @@
 com/example/ChoiceOfStacksTests.class
+com/example/StackOfChoicesConditionalLogicTests.class
+com/example/StackOfChoicesComplexConditionsTests.class
+com/example/StackOfChoicesConditionalValuesTests.class
+BufferedStackTests.class
