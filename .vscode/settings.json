@@ -1,0 +1,11 @@
+{
+    "java.test.config": [
+        {
+            "name": "JUnit 5", 
+            "workingDirectory": "${workspaceFolder}",
+            "vmArgs": ["-ea"], // Enable assertions
+            "args": [] // Add any additional arguments as needed
+        }
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
