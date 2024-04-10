@@ -4,6 +4,7 @@
 import com.example.BufferMode;
 import com.example.BufferedStack;
 import java.util.Arrays;
+import java.util.EmptyStackException;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -65,4 +66,28 @@ public class BufferedStackTests {
         assertEquals(20, stack.pop()); 
         assertEquals(10, stack.pop()); 
 }
+
+// ... your existing tests ...
+
+    @Test
+    public void testBufferCapacityInvariant() {
+        BufferedStack<Integer> stack = new BufferedStack<>(3);
+        stack.push(1);
+        stack.push(2);
+        stack.push(3); // Buffer is full
+
+        assertThrows(IllegalStateException.class, () -> stack.push(4)); 
+    }
+
+    @Test
+    public void testPopFromEmptyBufferedStack() {
+        BufferedStack<Integer> stack = new BufferedStack<>(3);
+        assertThrows(EmptyStackException.class, () -> stack.pop());
+    }
+
+    @Test
+    public void testInvalidBufferSize() {
+        assertThrows(IllegalArgumentException.class, () -> new BufferedStack<>(0)); 
+    }
+
 }

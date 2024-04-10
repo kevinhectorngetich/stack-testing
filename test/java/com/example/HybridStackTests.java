@@ -1,6 +1,7 @@
 // File: src/test/java/com/example/HybridStackTests.java
 package com.example;
 
+import java.util.EmptyStackException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -41,11 +42,11 @@ public class HybridStackTests {
     public void testRemoveByIndex() {
         HybridStack<String> stack = new HybridStack<>();
         stack.setMode(StackMode.VARIATIONAL);
-        stack.push("apple"); 
+        stack.push("apple");
         stack.push("banana");
         stack.push("orange");
 
-        assertEquals("banana", stack.remove(1)); 
+        assertEquals("banana", stack.remove(1));
         assertEquals(2, stack.size()); // Verify the size is reduced
     }
 
@@ -57,7 +58,7 @@ public class HybridStackTests {
         stack.push(10);
 
         assertTrue(stack.contains(10));
-        assertFalse(stack.contains(20)); 
+        assertFalse(stack.contains(20));
     }
 
     @Test
@@ -109,4 +110,21 @@ public class HybridStackTests {
         assertEquals(20, stack.pop()); // Verify order was preserved
         assertEquals(10, stack.pop());
     }
+
+    // negative cases and invariants
+    // ... your existing tests ...
+
+    @Test
+    public void testEmptyPopInClassicMode() {
+        HybridStack<Integer> stack = new HybridStack<>(); 
+        assertThrows(EmptyStackException.class, () -> stack.pop());
+    }
+
+    @Test
+    public void testEmptyPopInVariationalMode() {
+        HybridStack<Integer> stack = new HybridStack<>(); 
+        stack.setMode(StackMode.VARIATIONAL);
+        assertThrows(EmptyStackException.class, () -> stack.pop()); 
+    }
+
 }

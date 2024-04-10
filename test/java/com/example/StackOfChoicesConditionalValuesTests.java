@@ -18,4 +18,18 @@ public class StackOfChoicesConditionalValuesTests {
     }
 
     // More test cases below...
+    // ... other tests for invariant and negative cases... 
+
+@Test
+public void testPriorityFiltering() {
+    StackOfChoicesConditionalValues stack = new StackOfChoicesConditionalValues(); 
+    stack.push(new Choice<>(10, true));
+    stack.push(new Choice<>(5, false)); // Low priority 
+    stack.push(new Choice<>(20, true));
+
+    assertEquals(20, stack.pop().getValue());
+    assertEquals(10, stack.pop().getValue());
+    assertTrue(stack.isEmpty());
+}
+
 }

@@ -1,6 +1,7 @@
 // File: src/test/java/com/example/StackOfChoicesConditionalLogicTests.java
 package com.example;
 
+import java.util.EmptyStackException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,5 +30,23 @@ public class StackOfChoicesConditionalLogicTests {
         assertTrue(stack.isEmpty());
     }
 
-    // You can add more tests here!
+    @Test
+    public void testEvenNumberInvariant() {
+        StackOfChoicesConditionalLogic stack = new StackOfChoicesConditionalLogic();
+        stack.push(10);
+        stack.push(2);
+        stack.push(8);
+
+        // Ensure all elements are even
+        while (!stack.isEmpty()) {
+            int value = stack.pop();
+            assertTrue(value % 2 == 0, "Popped value was not even: " + value);
+        }
+    }
+    @Test
+    public void testPopFromEmptyStack() {
+        StackOfChoicesConditionalLogic stack = new StackOfChoicesConditionalLogic();
+        assertThrows(EmptyStackException.class, () -> stack.pop());
+    }
+
 }
