@@ -27,7 +27,7 @@ public class HybridStackTests {
         stack.push(20);
         stack.push(30);
     
-        assertEquals(30, stack.pop()); // Pop from the end 
+        assertEquals(30, stack.pop()); // Pop from the end
         assertEquals(20, stack.pop());
         assertEquals(10, stack.pop());
         assertTrue(stack.isEmpty());
